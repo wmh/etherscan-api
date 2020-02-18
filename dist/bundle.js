@@ -94,14 +94,17 @@ module.exports = function(getRequest, apiKey) {
       if (!startblock) {
         startblock = 0;
       }
+      queryObject.startblock = startblock;
 
       if (!endblock) {
         endblock = 'latest';
       }
+      queryObject.endblock = endblock;
 
       if (!sort) {
         sort = 'asc';
       }
+      queryObject.sort = sort;
 
       if (txhash) {
         queryObject.txhash = txhash;
@@ -174,13 +177,15 @@ module.exports = function(getRequest, apiKey) {
      * @param {string} address - Account address
      * @param {string} startblock - start looking here
      * @param {string} endblock - end looking there
-     * @param {string} sort - Sort asc/desc
+      * @param {number} page - Page number
+      * @param {number} offset - Max records to return
+      * @param {string} sort - Sort asc/desc
      * @param {string} contractaddress - Address of ERC20 token contract (if not specified lists transfers for all tokens)
      * @example
      * var txlist = api.account.tokentx('0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae', '0x5F988D968cb76c34C87e6924Cc1Ef1dCd4dE75da', 1, 'latest', 'asc');
      * @returns {Promise.<object>}
      */
-    tokentx(address, contractaddress, startblock, endblock, sort) {
+    tokentx(address, contractaddress, startblock, endblock, page, offset, sort) {
       const module = 'account';
       const action = 'tokentx';
 
@@ -192,12 +197,20 @@ module.exports = function(getRequest, apiKey) {
         endblock = 'latest';
       }
 
+       if (!page) {
+         page = 1;
+       }
+
+       if (!offset) {
+         offset = 100;
+       }
+
       if (!sort) {
         sort = 'asc';
       }
 
       var queryObject = {
-        module, action, startblock, endblock, sort, address, apiKey
+        module, action, startblock, endblock, page, offset, sort, address, apiKey
       };
 
       if (contractaddress) {
@@ -285,11 +298,26 @@ const TESTNET_API_URL_MAP = {
   homestead: 'https://api.etherscan.io'
 };
 
-module.exports = function(chain, timeout) {
-  var client = axios.create({
-    baseURL: pickChainUrl(chain),
+module.exports = function(chain, timeout, proxyUrl, headers) {
+  var param = {
     timeout: timeout
-  });
+  };
+
+  var baseUrl = pickChainUrl(chain);
+  if (proxyUrl && 0 < proxyUrl.length) {
+    if (proxyUrl.charAt(proxyUrl.length - 1) == '/') {
+      baseUrl = proxyUrl + '/' + baseUrl;
+    } else {
+      baseUrl = proxyUrl + baseUrl;
+    }
+  }
+  param[baseUrl] = baseUrl;
+
+  if (headers) {
+    param[headers] = headers;
+  }
+
+  var client = axios.create(param);
 
   /**
    * @param query
@@ -301,10 +329,13 @@ module.exports = function(chain, timeout) {
         var data = response.data;
 
         if (data.status && data.status != 1) {
-          let returnMessage = 'NOTOK';
+          let returnMessage = data.message ||'NOTOK';
           if (data.result && typeof data.result === 'string') {
             returnMessage = data.result;
+          } else if (data.message && typeof data.message === 'string') {
+            returnMessage = data.message;
           }
+
           return reject(returnMessage);
         }
 
@@ -345,8 +376,10 @@ const account = require('./account');
  * @param {string} apiKey - (optional) Your Etherscan APIkey
  * @param {string} chain - (optional) Testnet chain keys [ropsten, rinkeby, kovan]
  * @param {number} timeout - (optional) Timeout in milliseconds for requests, default 10000
+ * @param {string} proxyUrl - (optional) The URL of proxy server to avoid CORS
+ * @param {object} headers - (optional) The object containing custom headers
  */
-module.exports = function(apiKey, chain, timeout) {
+module.exports = function(apiKey, chain, timeout, proxyUrl, headers) {
 
   if (!apiKey) {
     apiKey = 'YourApiKeyToken';
@@ -357,7 +390,7 @@ module.exports = function(apiKey, chain, timeout) {
     timeout = 10000;
   }
 
-  var getRequest = require('./get-request')(chain, timeout);
+  var getRequest = require('./get-request')(chain, timeout, proxyUrl, headers);
 
   /** @lends module:etherscan/api */
   return {
