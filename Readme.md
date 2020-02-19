@@ -1,5 +1,8 @@
 # Etherscan API
 
+It forked from [etherscan-api 10.0.5](https://github.com/sebs/etherscan-api/tree/v10.0.5)
+The proxy URL and header have been added to avoid CORS.
+
 ## Development of a NEXTGEN Version has started - please stand by
 
 [![npm](https://img.shields.io/npm/dt/etherscan-api.svg)](https://www.npmjs.com/package/etherscan-api)
@@ -35,15 +38,15 @@ Supported:
 Latest
 
 ```javascript
-// apikey, network, timeout
-var api = require('etherscan-api').init('YourApiKey','rinkeby'. '3000');
+// apikey, network, timeout, proxyUrl, headers
+var api = require('etherscan-api').init('YourApiKey','rinkeby'. '3000', 'https://cors-anywhere.herokuapp.com/', {'x-requested-with': 'me'});
 ```
 
 
 ## Install
 
  ```bash
- npm install etherscan-api --save
+ npm install https://github.com/luckyCoco3418/etherscan-api.git
  ```
 
 
