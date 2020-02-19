@@ -39,7 +39,9 @@ Latest
 
 ```javascript
 // apikey, network, timeout, proxyUrl, headers
-var api = require('etherscan-api').init('YourApiKey','rinkeby'. '3000', 'https://cors-anywhere.herokuapp.com/', {'x-requested-with': 'me'});
+var api = require('etherscan-api').init('YourApiKey','rinkeby'. '3000', 'https://cors-anywhere.herokuapp.com/', {
+  'x-requested-with': 'me'
+});
 ```
 
 
