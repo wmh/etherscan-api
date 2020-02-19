@@ -311,7 +311,7 @@ module.exports = function(chain, timeout, proxyUrl, headers) {
       baseUrl = proxyUrl + '/' + baseUrl;
     }
   }
-  param['baseUrl'] = baseUrl;
+  param['baseURL'] = baseUrl;
 
   if (headers) {
     param['headers'] = headers;
