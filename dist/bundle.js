@@ -306,15 +306,15 @@ module.exports = function(chain, timeout, proxyUrl, headers) {
   var baseUrl = pickChainUrl(chain);
   if (proxyUrl && 0 < proxyUrl.length) {
     if (proxyUrl.charAt(proxyUrl.length - 1) == '/') {
-      baseUrl = proxyUrl + '/' + baseUrl;
-    } else {
       baseUrl = proxyUrl + baseUrl;
+    } else {
+      baseUrl = proxyUrl + '/' + baseUrl;
     }
   }
-  param[baseUrl] = baseUrl;
+  param['baseUrl'] = baseUrl;
 
   if (headers) {
-    param[headers] = headers;
+    param['headers'] = headers;
   }
 
   var client = axios.create(param);
