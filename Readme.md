@@ -1,6 +1,6 @@
 # Etherscan API
 
-It forked from [etherscan-api 10.0.5](https://github.com/sebs/etherscan-api/tree/v10.0.5)
+It forked from [etherscan-api 10.0.5](https://github.com/sebs/etherscan-api/tree/v10.0.5)<br>
 The proxy URL and header have been added to avoid CORS.
 
 ## Development of a NEXTGEN Version has started - please stand by
