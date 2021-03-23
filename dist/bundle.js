@@ -295,7 +295,9 @@ const TESTNET_API_URL_MAP = {
   ropsten: 'https://api-ropsten.etherscan.io',
   kovan: 'https://api-kovan.etherscan.io',
   rinkeby: 'https://api-rinkeby.etherscan.io',
-  homestead: 'https://api.etherscan.io'
+  homestead: 'https://api.etherscan.io',
+  heco_mainnet: 'https://api.hecoinfo.com',
+  heco_testnet: 'https://api-testnet.hecoinfo.com',
 };
 
 module.exports = function(chain, timeout, proxyUrl, headers) {
