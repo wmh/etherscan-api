@@ -8,7 +8,7 @@
     "posttest": "npm run lint",
     "lint": "jshint lib test",
     "docs": "documentation build ./lib/init.js -f html -o out",
-    "bundle": "browserify index.js -s etherscanApi -o dist/bundle.js && git commit ./dist -m bundle && git push",
+    "bundle": "npx browserify index.js -s etherscanApi -o dist/bundle.js && git commit ./dist -m bundle && git push",
     "preversion": "npm run lint && npm run changelog",
     "postversion": "git push && git push --tags",
     "changelog": "rm ./docs/CHANGELOG.md && changelog https://github.com/sebs/etherscan-api all > ./docs/CHANGELOG.md && git add ./docs/CHANGELOG.md && git commit ./docs/CHANGELOG.md -m changelog",

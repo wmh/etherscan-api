@@ -34,6 +34,8 @@ Supported:
 * morden
 * ropsten
 * rinkeby
+* heco_mainnet
+* heco_testnet
 
 Latest
 
