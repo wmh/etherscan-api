@@ -1,5 +1,5 @@
 {
-  "name": "etherscan-api",
+  "name": "etherscan-api-e",
   "version": "10.0.5",
   "description": "API to etherscan with a simple interface",
   "main": "index.js",
@@ -25,14 +25,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sebs/etherscan-api.git"
+    "url": "git+https://github.com/luckyCoco3418/etherscan-api.git"
   },
-  "author": "",
+  "author": "luckycoco3418",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sebs/etherscan-api/issues"
-  },
-  "homepage": "https://github.com/sebs/etherscan-api#readme",
   "devDependencies": {
     "browserify": "^16.5.0",
     "chai": "^4.2.0",
