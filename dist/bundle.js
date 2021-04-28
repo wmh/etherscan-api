@@ -298,6 +298,8 @@ const TESTNET_API_URL_MAP = {
   homestead: 'https://api.etherscan.io',
   heco_mainnet: 'https://api.hecoinfo.com',
   heco_testnet: 'https://api-testnet.hecoinfo.com',
+  bsc_mainnet: 'https://api.bscscan.com',
+  bsc_testnet: 'https://api-testnet.bscscan.com',
 };
 
 module.exports = function(chain, timeout, proxyUrl, headers) {
