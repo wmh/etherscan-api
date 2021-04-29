@@ -36,6 +36,8 @@ Supported:
 * rinkeby
 * heco_mainnet
 * heco_testnet
+* bsc_mainnet
+* bsc_testnet
 
 Latest
 
