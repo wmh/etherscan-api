@@ -300,6 +300,8 @@ const TESTNET_API_URL_MAP = {
   heco_testnet: 'https://api-testnet.hecoinfo.com',
   bsc_mainnet: 'https://api.bscscan.com',
   bsc_testnet: 'https://api-testnet.bscscan.com',
+  matic_mainnet: 'https://api.polygonscan.com',
+  matic_mumbai: 'https://api-testnet.polygonscan.com',
 };
 
 module.exports = function(chain, timeout, proxyUrl, headers) {

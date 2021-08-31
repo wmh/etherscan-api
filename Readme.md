@@ -38,6 +38,8 @@ Supported:
 * heco_testnet
 * bsc_mainnet
 * bsc_testnet
+* matic_mainnet
+* matic_mumbai
 
 Latest
 

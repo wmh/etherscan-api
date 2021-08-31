@@ -1,6 +1,6 @@
 {
   "name": "etherscan-api-e",
-  "version": "10.0.6",
+  "version": "10.0.6-e1",
   "description": "API to etherscan with a simple interface",
   "main": "index.js",
   "scripts": {
@@ -23,11 +23,8 @@
     "transaction",
     "rest"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/luckyCoco3418/etherscan-api.git"
-  },
   "author": "luckycoco3418",
+  "repository": "https://github.com/luckyCoco3418/etherscan-api.git",
   "license": "ISC",
   "devDependencies": {
     "browserify": "^16.5.0",
