@@ -17,7 +17,7 @@ Mainnet
 
 
 ```javascript
-var api = require('etherscan-api').init('YourApiKey');
+var api = require('etherscan-api-e').init('YourApiKey');
 var balance = api.account.balance('0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae');
 balance.then(function(balanceData){
   console.log(balanceData);
@@ -45,7 +45,7 @@ Latest
 
 ```javascript
 // apikey, network, timeout, proxyUrl, headers
-var api = require('etherscan-api').init('YourApiKey','rinkeby'. '3000', 'https://cors-anywhere.herokuapp.com/', {
+var api = require('etherscan-api-e').init('YourApiKey','rinkeby'. '3000', 'https://cors-anywhere.herokuapp.com/', {
   'x-requested-with': 'me'
 });
 ```
